@@ -9,71 +9,75 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f6f7f9;
+      background: #f4f6f8;
       color: #1e2a36;
     }
 
     header {
       background: linear-gradient(135deg, #0b2c47, #123a5f);
       color: #fff;
-      padding: 80px 24px;
+      padding: 90px 24px;
       text-align: center;
     }
 
     header h1 {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
+      font-size: 2.6rem;
+      margin-bottom: 18px;
       color: #f5d88a;
+      letter-spacing: 1px;
     }
 
     header p {
-      font-size: 1.2rem;
-      max-width: 720px;
+      font-size: 1.15rem;
+      max-width: 760px;
       margin: 0 auto;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     section {
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 80px 24px;
     }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 24px;
+    h2 {
+      font-size: 2.1rem;
+      margin-bottom: 36px;
       color: #0b2c47;
-    }
-
-    section p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 18px;
+      text-align: center;
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 36px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      margin-bottom: 40px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
     }
 
     .produto {
       background: linear-gradient(135deg, #0b2c47, #123a5f);
       color: #fff;
-      border-radius: 22px;
+      border-radius: 24px;
       padding: 48px 32px;
       text-align: center;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
     }
 
     .produto h3 {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       color: #f5d88a;
       margin-bottom: 16px;
     }
 
     .produto p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.6;
       margin-bottom: 28px;
     }
@@ -82,16 +86,16 @@
       display: inline-block;
       background: #f5d88a;
       color: #0b2c47;
-      padding: 16px 34px;
+      padding: 16px 36px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-decoration: none;
-      transition: 0.2s;
+      transition: 0.25s;
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.06);
       background: #ffd966;
     }
 
@@ -99,7 +103,7 @@
       background: #0b2c47;
       color: #cfd8df;
       text-align: center;
-      padding: 32px 16px;
+      padding: 40px 20px;
       font-size: 0.9rem;
     }
 
@@ -116,9 +120,8 @@
 <header>
   <h1>ASM</h1>
   <p>
-    A fisioterapia começa quando o profissional entende o corpo além do protocolo.  
-    Eu formo fisioterapeutas capazes de decidir com ciência, segurança e sensibilidade,
-    para que cada paciente receba o cuidado que realmente merece.
+    Formação profissional, clínica consciente e raciocínio clínico aplicado.  
+    Aqui você não aprende protocolos prontos — aprende a pensar, decidir e conduzir com segurança.
   </p>
 </header>
 
@@ -126,42 +129,57 @@
   <div class="card">
     <h2>Quem sou eu</h2>
     <p>
-      Sou fisioterapeuta com atuação clínica em neurofuncional, traumatopedia,
+      Sou fisioterapeuta com atuação clínica em neurofuncional, disfunções musculoesqueléticas,
       escoliose e análise do movimento baseada em raciocínio clínico individual.
     </p>
     <p>
-      Tenho formação em ABA, trabalho com crianças neurodivergentes,
-      atuo como mentora de fisioterapeutas e estudantes
-      e sou mestranda em rendimento esportivo pela Faculdade Uniatlântica, na Espanha.
+      Atuo com crianças neurodivergentes, sou mentora de fisioterapeutas e estudantes
+      e trabalho formando profissionais capazes de pensar além do protocolo.
     </p>
     <p>
-      Minha missão é formar profissionais capazes de pensar, decidir e agir com clareza,
-      segurança e responsabilidade clínica — indo além de protocolos prontos.
+      Meu trabalho é sobre consciência clínica, responsabilidade profissional
+      e decisões baseadas em ciência e leitura real do corpo.
     </p>
   </div>
 </section>
 
 <section>
-  <div class="produto">
-    <h3>ASM — Sistema de Gestão Clínica</h3>
-    <p>
-      Meu principal produto digital.  
-      Um sistema pensado por quem vive a clínica,
-      para organizar pacientes, agenda, evolução, financeiro
-      e comunicação direta pelo WhatsApp.
-    </p>
+  <h2>Produtos ASM</h2>
 
-    <a class="btn" href="COLE_AQUI_SEU_LINK_DO_KIWIFY" target="_blank">
-      Comprar agora
-    </a>
+  <div class="produtos">
+
+    <div class="produto">
+      <h3>ASM Gestão Clínica Digital</h3>
+      <p>
+        Sistema digital para organização clínica profissional.  
+        Formulários editáveis no navegador, geração de documentos em PDF,
+        sem necessidade de instalar aplicativos e alinhado às exigências do CREFITO.
+      </p>
+      <a class="btn" href="https://pay.kiwify.com.br/u7TrpUP" target="_blank">
+        Acessar produto
+      </a>
+    </div>
+
+    <div class="produto">
+      <h3>ASM Atlas Card Quiz</h3>
+      <p>
+        Atlas interativo de anatomia com flashcards práticos e quizzes clínicos.  
+        Desenvolvido para memorização eficiente, raciocínio clínico
+        e aplicação direta na prática profissional.
+      </p>
+      <a class="btn" href="https://pay.kiwify.com.br/5heQEAV" target="_blank">
+        Acessar produto
+      </a>
+    </div>
+
   </div>
 </section>
 
 <footer>
   <p>
-    © ASM — Desenvolvido por Dra. Andresa Augusto  
+    © ASM — Dra. Andresa Augusto  
     <br>
-    Uso, reprodução ou distribuição proibidos sem autorização.
+    Conteúdo protegido. Uso não autorizado é proibido.
   </p>
   <p>
     Instagram:
