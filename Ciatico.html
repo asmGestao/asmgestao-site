@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo sobre Ciática - ASM Fisioterapia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f5f5;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 20px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+        
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Header com degradê */
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 30px;
+            margin: -40px -40px 30px -40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .gold-accent {
+            color: #d4af37;
+            font-weight: 700;
+        }
+        
+        /* Mapa Mental Style */
+        .mindmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .central-node {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.3);
+            position: relative;
+            margin: 0 auto;
+            max-width: 80%;
+            border: 3px solid #d4af37;
+        }
+        
+        .branches {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .branch {
+            background: #f8f9fa;
+            border-left: 5px solid #d4af37;
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .branch:hover {
+            transform: translateX(5px);
+        }
+        
+        .branch h3 {
+            color: #1e3a5f;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .branch-icon {
+            width: 30px;
+            height: 30px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .branch ul {
+            list-style: none;
+            padding-left: 40px;
+        }
+        
+        .branch li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95em;
+        }
+        
+        .branch li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: bold;
+        }
+        
+        /* Seção de imagem */
+        .image-section {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            border: 2px solid #d4af37;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #1e3a5f;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fee 0%, #fcc 100%);
+            border: 3px solid #c53030;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .warning-box::before {
+            content: '⚠️';
+            font-size: 2em;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .warning-box h3 {
+            color: #c53030;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-size: 1.3em;
+        }
+        
+        .warning-box p {
+            color: #742a2a;
+            line-height: 1.8;
+        }
+        
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .info-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .info-card .number {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #d4af37;
+            display: block;
+        }
+        
+        .info-card .label {
+            color: #1e3a5f;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1e3a5f, #d4af37);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #d4af37;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border: 4px solid #1e3a5f;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 40px -40px -40px -40px;
+            font-size: 0.9em;
+        }
+        
+        .footer .highlight {
+            color: #d4af37;
+            font-weight: 700;
+        }
+        
+        /* Página 2 - Estilo diferente */
+        .page-2 .header {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        }
+        
+        .page-2 .header::after {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        }
+        
+        .test-box {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 3px solid #d4af37;
+        }
+        
+        .test-box h3 {
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .test-steps {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .step {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: #d4af37;
+            color: #1e3a5f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+        }
+        
+        /* Página 3 */
+        .solution-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 3px solid #38b2ac;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .solution-box h3 {
+            color: #234e52;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .benefit-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .benefit-icon {
+            font-size: 1.5em;
+        }
+        
+        /* CTA Final */
+        .cta-box {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            border: 3px solid #d4af37;
+        }
+        
+        .cta-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .cta-box .phone {
+            font-size: 2em;
+            color: #d4af37;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                width: 100%;
+                min-height: 100vh;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page {
+                width: 100%;
+                padding: 20px;
+            }
+            .branches {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .test-steps {
+                flex-direction: column;
+            }
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PÁGINA 1: ANATOMIA E O QUE É CIÁTICA -->
+    <div class="page">
+        <div class="header">
+            <h1>🧠 Guia da Ciática</h1>
+            <p class="subtitle">Entenda seu nervo ciático e por que você sente dor</p>
+        </div>
+
+        <div class="mindmap-container">
+            <div class="central-node">
+                NERVO CIÁTICO<br>
+                <span style="font-size: 0.8em; font-weight: 400;">O maior nervo do corpo humano</span>
+            </div>
+
+            <div class="image-section">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.kenhub.com/867c2901118dc74fa65286d5af0aef50fc20088c.jpg" alt="Trajeto do Nervo Ciático" style="max-height: 300px;">
+                <p class="image-caption">Trajeto completo do nervo ciático: da coluna lombar até os dedos dos pés</p>
+            </div>
+
+            <div class="branches">
+                <div class="branch">
+                    <h3><span class="branch-icon">1</span> ORIGEM</h3>
+                    <ul>
+                        <li>Sai da coluna lombar (L4 a S3)</li>
+                        <li>Raízes nervosas se unem formando um "cabo" único</li>
+                        <li>Passa pelo glúteo (músculo piriforme)</li>
+                    </ul>
+                </div>
+
+                <div class="branch">
+                    <h3><span class="branch-icon">2</span> TRAJETO</h3>
+                    <ul>
+                        <li>Desce pela parte posterior da coxa</li>
+                        <li>Passa por baixo dos isquiotibiais</li>
+                        <li>Dividindo-se em tibial e fibular comum</li>
+                    </ul>
+                </div>
+
+                <div class="branch">
+                    <h3><span class="branch-icon">3</span> EXTENSÃO</h3>
+                    <ul>
+                        <li>Atinge a panturrilha e tornozelo</li>
+                        <li>Inerva o pé e dedos</li>
+                        <li>Comprimento: até 1 metro!</li>
+                    </ul>
+                </div>
+
+                <div class="branch">
+                    <h3><span class="branch-icon">4</span> FUNÇÃO</h3>
+                    <ul>
+                        <li>Controle motor (movimento)</li>
+                        <li>Sensibilidade da perna e pé</li>
+                        <li>Reflexos do joelho e tornozelo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>POR QUE DOI TANTO?</h3>
+                <p>Quando o nervo ciático fica <strong>inflamado ou comprimido</strong> (por hérnia de disco, estreitamento do canal vertebral ou tensão muscular), ele envia sinais de alerta intensos. Como é o nervo mais longo do corpo, a dor pode irradiar desde a lombar até os dedos dos pés, causando:</p>
+                <br>
+                <div class="info-grid" style="margin-top: 15px;">
+                    <div class="info-card">
+                        <span class="number">🔥</span>
+                        <div class="label">Dor lancinante</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="number">⚡</span>
+                        <div class="label">Choque elétrico</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="number">🦵</span>
+                        <div class="label">Formigamento</div>
+                    </div>
+                    <div class="info-card">
+                        <span class="number">💪</span>
+                        <div class="label">Fraqueza muscular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 <span class="highlight">ASM Fisioterapia - Dra Andresa Augusto</span> | CREFITO 40.9314-F</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Material educativo - Proibida reprodução sem autorização</p>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: TESTES E O QUE NÃO FAZER -->
+    <div class="page page-2">
+        <div class="header">
+            <h1>🩺 Testes e Cuidados</h1>
+            <p class="subtitle">Como identificar e o que evitar na crise ciática</p>
+        </div>
+
+        <div class="mindmap-container">
+            <h2 style="color: #1e3a5f; text-align: center; margin-bottom: 20px; border-bottom: 3px solid #d4af37; padding-bottom: 10px;">
+                TESTES CLÍNICOS ESPECÍFICOS
+            </h2>
+
+            <div class="test-box">
+                <h3>🦵 TESTE DE LASÈGUE (Elevador da perna reta)</h3>
+                <p style="margin-bottom: 15px; opacity: 0.9;">O exame físico mais utilizado para detectar irritação do nervo ciático</p>
+                
+                <div class="test-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p>Paciente deitado de costas, perna estendida</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p>Elevação gradual da perna afetada</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p>Dor entre 30°-70° = <strong>POSITIVO</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-section" style="background: white; border: 2px solid #1e3a5f;">
+                <img src="https://kimi-web-img.moonshot.cn/img/i0.wp.com/562a7d8e8d9914c6413d20e4f89a9827d2a04869.jpg" alt="Teste de Lasègue" style="max-height: 250px;">
+                <p class="image-caption">Teste de Lasègue: dor ao elevar a perna entre 30° e 70° indica ciática</p>
+            </div>
+
+            <div class="branches">
+                <div class="branch" style="border-left-color: #c53030;">
+                    <h3 style="color: #c53030;"><span class="branch-icon" style="background: #c53030;">!</span> TESTE DE BRAGARD</h3>
+                    <ul>
+                        <li>Variação do Lasègue</li>
+                        <li>Após elevar a perna, flexiona-se o pé para cima</li>
+                        <li>Aumento da dor = confirmação de irritação nervosa</li>
+                    </ul>
+                </div>
+
+                <div class="branch" style="border-left-color: #38b2ac;">
+                    <h3 style="color: #234e52;"><span class="branch-icon" style="background: #38b2ac;">✓</span> TESTE DO SLUMP</h3>
+                    <ul>
+                        <li>Paciente sentado, relaxado</li>
+                        <li>Flexiona cabeça e tronco para frente</li>
+                        <li>Estende a perna progressivamente</li>
+                        <li>Reproduz sintomas = positivo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box" style="background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%); border-color: #c53030;">
+                <h3>🚫 ALERTA MÁXIMO: NÃO ALONGE DURANTE A CRISE!</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong>Por que não alongar o nervo inflamado?</strong><br><br>
+                    
+                    Imagine o nervo como um <span style="color: #c53030; font-weight: bold;">CANUDO</span>. Quando está saudável, a "luz" (impulso nervoso) passa livremente. Quando está <strong>inflamado</strong>, é como se o canudo estivesse amassado ou obstruído.<br><br>
+                    
+                    <strong>Ao alongar:</strong> Você estica ainda mais esse "canudo" danificado, reduzindo o espaço interno e piorando a circulação sanguínea (vasoconstrição). Isso aumenta a inflamação e a dor!<br><br>
+                    
+                    <span style="background: #c53030; color: white; padding: 5px 10px; border-radius: 5px;">Diferente do músculo, o nervo não tem elasticidade para esticar!</span>
+                </p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card" style="border-color: #c53030;">
+                    <span class="number" style="color: #c53030;">❌</span>
+                    <div class="label">Alongamento de isquiotibiais</div>
+                </div>
+                <div class="info-card" style="border-color: #c53030;">
+                    <span class="number" style="color: #c53030;">❌</span>
+                    <div class="label">Flexão lumbar forçada</div>
+                </div>
+                <div class="info-card" style="border-color: #c53030;">
+                    <span class="number" style="color: #c53030;">❌</span>
+                    <div class="label">Levantar peso</div>
+                </div>
+                <div class="info-card" style="border-color: #c53030;">
+                    <span class="number" style="color: #c53030;">❌</span>
+                    <div class="label">Ficar sentado por muito tempo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 <span class="highlight">ASM Fisioterapia - Dra Andresa Augusto</span> | WhatsApp: (31) 99786-7911</p>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: SOLUÇÃO E TRATAMENTO -->
+    <div class="page">
+        <div class="header">
+            <h1>💡 A Solução</h1>
+            <p class="subtitle">Como a fisioterapia especializada recupera seu nervo</p>
+        </div>
+
+        <div class="mindmap-container">
+            <div class="central-node" style="background: linear-gradient(135deg, #38b2ac 0%, #319795 100%); border-color: #d4af37;">
+                FISIOTERAPIA<br>ESPECIALIZADA<br>
+                <span style="font-size: 0.7em;">Liberação do trajeto nervoso</span>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: #1e3a5f; margin-bottom: 10px;">🔍 AVALIAÇÃO ESPECÍFICA</h3>
+                        <p>Identificamos o ponto exato de compressão (coluna, piriforme, isquiotibiais) através de testes clínicos precisos.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #1e3a5f; margin-bottom: 10px;">🎯 MOBILIZAÇÃO NEURAL</h3>
+                        <p>Técnicas específicas que "deslizam" o nervo suavemente, restaurando sua mobilidade SEM alongar ou forçar.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 style="color: #1e3a5f; margin-bottom: 10px;">💪 LIBERAÇÃO MUSCULAR</h3>
+                        <p>Tratamos músculos que comprimem o nervo (piriforme, gemelos, isquiotibiais) com técnicas manuais específicas.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div style="width: 45%;"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div style="width: 45%;"></div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 style="color: #1e3a5f; margin-bottom: 10px;">🏃‍♂️ EXERCÍCIOS DIRECIONADOS</h3>
+                        <p>Fortalecimento e estabilização lombar para prevenir recidivas, sempre respeitando o limite do nervo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-box">
+                <h3>✨ POR QUE FUNCIONA?</h3>
+                <p style="font-size: 1.1em; color: #234e52; margin-bottom: 20px;">
+                    Ao invés de forçar o estiramento, <strong>sensibilizamos</strong> o nervo gradualmente, 
+                    reduzindo sua irritabilidade e restaurando o fluxo sanguíneo. 
+                    O resultado é a diminuição da dor e recuperação da função.
+                </p>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎯</span>
+                        <span>Tratamento individualizado</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">⚡</span>
+                        <span>Alívio progressivo da dor</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🔄</span>
+                        <span>Recuperação da mobilidade</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🛡️</span>
+                        <span>Prevenção de recidivas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-section" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; border: 3px solid #d4af37;">
+                <h3 style="margin-bottom: 15px; color: #d4af37;">📊 RESULTADOS ESPERADOS</h3>
+                <div class="info-grid" style="margin: 0;">
+                    <div class="info-card" style="background: rgba(255,255,255,0.1); color: white; border-color: #d4af37;">
+                        <span class="number" style="color: #d4af37;">90%</span>
+                        <div class="label" style="color: white;">Melhora significativa com tratamento conservador</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(255,255,255,0.1); color: white; border-color: #d4af37;">
+                        <span class="number" style="color: #d4af37;">5-10</span>
+                        <div class="label" style="color: white;">Sessões para alívio da crise aguda</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>🚀 Não espere a dor piorar!</h2>
+                <p style="font-size: 1.1em; margin-bottom: 20px;">
+                    A ciática tem tratamento. Quanto antes buscar ajuda especializada, 
+                    mais rápida será a recuperação.
+                </p>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin: 20px 0;">
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Agende sua avaliação:</p>
+                    <p class="phone">(31) 99786-7911</p>
+                    <p style="font-size: 0.9em; opacity: 0.9;">Dra. Andresa Augusto - Fisioterapeuta Especialista</p>
+                </div>
+
+                <p style="font-size: 0.8em; margin-top: 20px; opacity: 0.8;">
+                    CREFITO 40.9314-F | ASM Fisioterapia &copy; 2026
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="font-size: 0.8em;">
+                Este material tem caráter educativo e não substitui consulta médica ou fisioterapêutica.<br>
+                <span class="highlight">Proibida reprodução sem autorização.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Botão para gerar PDF -->
+    <div class="no-print" style="text-align: center; padding: 20px; background: #f0f0f0; position: fixed; bottom: 0; left: 0; right: 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);">
+        <button onclick="window.print()" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); color: white; border: none; padding: 15px 40px; font-size: 1.1em; border-radius: 30px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);">
+            📄 Clique aqui para salvar como PDF
+        </button>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            Ou pressione Ctrl+P (Windows) / Cmd+P (Mac)
+        </p>
+    </div>
+
+</body>
+</html>
